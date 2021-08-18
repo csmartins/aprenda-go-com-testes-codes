@@ -1,17 +1,22 @@
 package main
 
-import "fmt"
-
 const prefixHey = "Hey "
+const prefixEspanol = "Holla "
+const prefixPortugues = "Olá "
 
-func Ola(name string) string {
+func Ola(name string, idiom string) string {
 	if name == ""{
 		name = "you"
 	}
-	
-	return prefixHey + name
-}
-func main(){
-	fmt.Println(Ola("world"))
 
+	prefix := prefixHey
+
+	switch idiom {
+	case "espanol":
+		prefix = prefixEspanol
+	case "portugues":
+		prefix = prefixPortugues
+	}
+	
+	return prefix + name
 }

@@ -11,16 +11,30 @@ func TestOla(t *testing.T) {
 		}
 	}
 	t.Run("say hey to the world", func(t *testing.T){
-		result := Ola("world")
+		result := Ola("world", "")
 		expected := "Hey world"
 	
 		verifyCorrectness(t, result, expected)
 	})
 
 	t.Run("default hey", func(t *testing.T){
-		result := Ola("")
+		result := Ola("", "")
 		expected := "Hey you"
 		
+		verifyCorrectness(t, result, expected)
+	})
+
+	t.Run("spanish greeting", func(t *testing.T){
+		result := Ola("muchacho", "espanol")
+		expected := "Holla muchacho"
+
+		verifyCorrectness(t, result, expected)
+	})
+
+	t.Run("portuguese greeting", func(t *testing.T){
+		result := Ola("mano", "portugues")
+		expected := "Olá mano"
+
 		verifyCorrectness(t, result, expected)
 	})
 }
