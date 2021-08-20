@@ -43,3 +43,29 @@ func TestArea(t *testing.T) {
 	})
 	
 }
+
+func TestSearch(t *testing.T){
+	dict := Dict{"test": "this is just a test"}
+
+	t.Run("known entry", func (t *testing.T) {
+		result, _ := dict.Search("test")
+		expected := "this is just a test"
+	
+		compareStrings(result, expected, t)
+	})
+
+	t.Run("unknown entry", func (t *testing.T) {
+		_, err := dict.Search("unknown")
+	
+		if err == nil{
+			t.Fatal("Got error as expected")
+		}
+	})
+}
+
+func compareStrings(result string, expected string, t *testing.T) {
+	t.Helper()
+	if result != expected {
+		t.Errorf("got '%s', but expected '%s'", result, expected)
+	}
+}
